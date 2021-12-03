@@ -1,0 +1,348 @@
+    body {
+        overflow:hidden;
+        font-family: "Lucida Console", Courier, monospace;
+        position:absolute;
+        width:100%;
+        height:100%;
+    }
+
+    #canvas-container {
+        overflow: hidden;
+        border: 0.1vw solid #ccc;
+        float:left;
+        left:2%;
+        top:2.5%;
+        position:fixed;
+        height:75%;
+        width:80%;
+    }
+    #field-canvas{
+        width:95%;
+        height:95%;
+        left:2.5%;
+        top:2.5%;
+        position:relative;
+    }
+    #tasks-preview{
+        direction: rtl;
+        overflow:scroll;
+        width:80%;
+        height:18%;
+        top:79%;
+        left:2%;
+        position:fixed;
+        border: 0.1vw solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    .taskPreview{
+      background-color: #4c90af; /* light blue */
+      border: 0.1vw solid rgb(16, 18, 136); /* blue */
+      width: 10%;
+      height:30%;
+      top: 10%;
+      margin-left: 2%;
+      color: white;
+      padding: 3% 4%;
+      text-align: center;
+      font-size: 1.5vw;
+      font-family: sans-serif;
+      position:relative;
+      display:block;
+      float:left;
+    }
+
+    #resetTasksButton{
+        background-color: #ff0202; /* Green */
+        border: none;
+        width:80%;
+        height:110%;
+        color: white;
+        padding: 3% 4%;
+        text-align: center;
+        display: block;
+        font-size: 1.3vw;
+        font-family: inherit;
+        border-radius:0.8vw;
+        position:relative;
+        float:bottom;
+    }
+
+    #tellInstructionsButton{
+        background-color: #0000ff; /* Green */
+        border: none;
+        width:80%;
+        height:110%;
+        color: white;
+        padding: 3% 4%;
+        text-align: center;
+        display: block;
+        font-size: 1.3vw;
+        font-family: inherit;
+        border-radius:0.8vw;
+        position:relative;
+        float:bottom;
+    }
+
+    #resetTasksButton.active #tellInstructionsButton.active  {
+        background-color: #312b2b;
+    }
+
+    #settings-container {
+        overflow: hidden;
+        border: 0.1vw solid #ccc;
+        background-color: #f1f1f1;
+        top: 2.5%;
+        right:2%;
+        display:table;
+        position:fixed;
+        width:14%;
+        height:95%;
+    }
+
+    .settings-tabs-header {
+        overflow: hidden;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: #ccc;
+        position:relative;
+        height:4vw;
+        font-family: "Lucida Console", Courier, monospace;
+    }
+    
+    .settings-tabs-header button {
+        background-color: inherit;
+        
+        border-top: none;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        text-align:center;
+        width: 50%;
+        position:relative;
+        height:100%;
+        font-size: 1.2vw;
+        font-family: inherit;
+    } 
+
+
+    .settings-sub-tabs-header {
+        overflow: hidden;
+        width: 100%;
+        background-color: #ccc;
+        position:relative;
+        height:2vw;
+        font-family: "Lucida Console", Courier, monospace;
+        display: flex;
+        align-items:center;
+    }
+
+    .settings-sub-sub-tabs-header {
+        overflow: hidden;
+        width: 90%;
+        left:4%;
+        background-color: #ccc;
+        position:relative;
+        height:2vw;
+        font-family: "Lucida Console", Courier, monospace;
+        display: flex;
+        align-items:center;
+        margin-top:3%;
+    }
+
+    .settings-sub-tabs-header button, .settings-sub-sub-tabs-header button {
+        background-color: inherit;
+        float: left;
+        display:inline-block;
+        border: solid 0.1vw #ccc;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        text-align:center;
+        width: 50%;
+        position:relative;
+        height:100%;
+        font-size: 1.2vw;
+        font-family: inherit;
+    }
+
+    .settings-tabs-header button:hover, .settings-sub-tabs-header button:hover, .settings-sub-sub-tabs-header button:hover {
+        background-color: #ddd;
+    }
+    .settings-tabs-header button.active, .settings-sub-tabs-header button.active, .settings-sub-sub-tabs-header button.active  {
+        background-color: #f1f1f1;
+    }
+
+    .settings-tab {
+        display: none;
+        box-sizing: border-box;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2%;
+        box-sizing: border-box;
+        height: 100%;
+        width:100%;
+        position:absolute;
+        font-size: 1.3vw;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .settings-sub-sub-tab {
+        display: none;
+        box-sizing: border-box;
+        height: 100%;
+        width:100%;
+        font-size: 1.3vw;
+        font-family: Arial, Helvetica, sans-serif;
+        position:relative;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-left:2%;
+    }    
+
+
+    .settings-sub-tab {
+        display: none;
+        box-sizing: border-box;
+        height: 100%;
+        width:100%;
+        font-size: 1.3vw;
+        font-family: Arial, Helvetica, sans-serif;
+        position:relative;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-left:2%;
+    }    
+    .settings-tab label {
+        font-size: inherit;
+    }    
+    .settings-tab button {
+        font-size: inherit;
+    }
+
+   
+    .settings-horizontal-container{
+        width:100%;
+        height: 8%;
+        position:relative;
+        font-family: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+    }
+    
+    .settings-vertical-container{
+        width:100%;
+        height:100%;
+        position:relative;
+        font-family: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items:center;
+    }
+
+    .settings-vertical-container button, .settings-horizontal-container button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      width:80%;
+      height:110%;
+      color: white;
+      padding: 3% 4%;
+      text-align: center;
+      display: block;
+      font-size: 1.3vw;
+      font-family: inherit;
+      border-radius:0.8vw;
+      position:relative;
+    }
+
+    .settings-vertical-container button.active, .settings-horizontal-container button.active {
+        background-color: #357a38;
+    }
+
+    .colorPreview {
+        width:80%; 
+        height:40%;
+        border: grey 1px solid;
+    }
+
+    #textureImage {
+        width:100%;
+        border: grey 1px solid;
+    }
+
+    input[type=range]{
+        position:relative;
+        display:block;
+        -webkit-appearance: none;
+        width: 60%;
+        height: 20%;
+        background: #d3d3d3;
+        outline: none;
+
+    }
+    input[type=range]::-webkit-slider-thumb{
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 4%; /* Set a specific slider handle width */
+        height: 1.8vw; /* Slider handle height */
+        background: #4CAF50; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border:solid 0.1vw #d3d3d3;
+        border-radius: 0.8vw;
+    }
+    input[type=range]::-moz-range-thumb{
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 4%; /* Set a specific slider handle width */
+        height: 1.8vw; /* Slider handle height */
+        background: #4CAF50; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border:solid 0.1vw #d3d3d3;
+        border-radius: 0.8vw;
+    }
+
+    .vertical_sliders_container {
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-end;
+        position:absolute;
+
+    }
+
+    
+    input[type=range][orient=vertical]{
+        height:0.6vw;
+        width:100%;
+        transform: rotateZ(270deg);
+        -moz-transform: rotate(270deg);
+    }
+    
+    input[type=range][orient=vertical]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 20%; /* Set a specific slider handle width */
+        height: 2.0vw; /* Slider handle height */
+        background: #4CAF50; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border:solid 0.1vw #d3d3d3;
+        border-radius: 0.8vw;
+    }
+
+
+    input[type=range][orient=vertical]::-moz-range-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 20%; /* Set a specific slider handle width */
+        height: 2.0vw; /* Slider handle height */
+        background: #4CAF50; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border:solid 0.1vw #d3d3d3;
+        border-radius: 0.8vw;
+    }

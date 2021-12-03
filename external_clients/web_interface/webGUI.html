@@ -1,0 +1,320 @@
+
+<script type="text/javascript" src="./Utils.js"></script>
+<script type="text/javascript" src="./defaultValues.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body id="body">
+    <div id="canvas-container">
+        <canvas id="field-canvas">
+        Oops ... your browser doesn't support the HTML5 canvas element
+        </canvas>
+    </div>
+    <div id="tasks-preview">
+    </div>
+    <div id="settings-container">
+        <div class="settings-tabs-header">
+            <button id="default-tab-button" class="settings-tab-button active" onclick="openTab(event, 'simple-tasks-tab')">Simple</button>
+            <button id="default-tab-button" class="settings-tab-button active" onclick="openTab(event, 'complex-tasks-tab')">Complex</button>
+            <!--button class="settings-tab-button" onclick="openTab(event, 'general-settings-tab')">General settings</button-->
+        </div>
+        <div id="simple-tasks-tab" class="settings-tab">
+            <!--
+                <div class="settings-horizontal-container" style="height:30%">
+                    <div class="settings-horizontal-container" style="height:40%"> 
+                        <div class="settings-horizontal-container" style="height:100%; justify-content: space-around">                 
+                            <button id = "AssignTaskButton_GoToPosition" onmousedown="toggleButton(event.target)">Show Mesh</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-horizontal-container"  style="height:30%">
+                    <div class="settings-horizontal-container" style="height:40%">
+                        <div class="settings-horizontal-container" style="height:100%; justify-content: space-around">                   
+                            <button id = "AssignTaskButton_KickBallToPosition" onmousedown="toggleButton(event.target)">Show Contours</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-horizontal-container"  style="height:30%">
+                    <div class="settings-horizontal-container" style="height:40%">
+                        <div class="settings-horizontal-container" style="height:100%; justify-content: space-around">                     
+                            <button id = "AssignTaskButton_CarryBallToPosition" onmousedown="toggleButton(event.target)">Texture ON</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-horizontal-container"  style="height:30%">
+                    <div class="settings-horizontal-container" style="height:40%">
+                        <div class="settings-horizontal-container" style="height:100%; justify-content: space-around">                     
+                            <button id = "AssignTaskButton_KickToGoal" onmousedown="toggleButton(event.target)">Texture ON</button>
+                        </div>
+                    </div>
+                </div>
+            -->
+        </div>
+        <div id="complex-tasks-tab" class="settings-tab">
+        </div>
+        <!--div id="general-settings-tab" class="settings-tab">
+            <div class="settings-sub-tabs-header">           
+                <button id = "Button_Bear" onclick="openSubTab(event, 'bear-appearance-tab')">Bear</button>                     
+                <button id = "Button_Tree" onclick="openSubTab(event, 'tree-appearance-tab')">Tree</button>
+            </div>  
+            <div id="bear-appearance-tab" class="settings-sub-tab"> 
+                <div class="settings-sub-sub-tabs-header">           
+                    <button id = "Button_Bear_Material" onclick="openSubSubTab(event, 'bear-material-tab')">Material</button>                     
+                    <button id = "Button_Bear_Texture" onclick="openSubSubTab(event, 'bear-texture-tab')">Texture</button>
+                </div>
+                <div id="bear-material-tab" class="settings-sub-sub-tab">
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Ambient 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>              
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="BearMaterialAmbientRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="BearMaterialAmbientGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="BearMaterialAmbientBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Diffuse 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>              
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="BearMaterialDiffuseRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="BearMaterialDiffuseGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="BearMaterialDiffuseBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Specular 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>             
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="BearMaterialSpecularRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="BearMaterialSpecularGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="BearMaterialSpecularBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>
+                        </div>                     
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Shininess 
+                            </label>
+                        </div>             
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <input id="BearMaterialShininessSlider" type="range" class="settings-slider" min="0.01" max="20.0" step="0.01" value="10" />
+                            </div>                
+                        </div>                     
+                    </div>
+                </div>
+                <div id="bear-texture-tab" class="settings-sub-sub-tab">
+                    <div class="settings-vertical-container">
+                        <div class="settings-horizontal-container" style="height:30%; justify-content:space-evenly">
+                            <div class="settings-vertical-container" >
+                                <img id = "hideTextureImage" src = "bearHide.PNG" style="max-height: 100%; max-width: 100%"></img>
+                                <label class="textureFileName" style="height:20%"></label>
+                            </div>
+                            <button class = "Button_ChooseTexture" style="padding: 0px; height:40%">Choose texture image<input class="uploadTexture" type='file' style="width:100%; height:100%;" hidden/></button>
+                        </div>
+                        <div class="settings-horizontal-container" style="height:30%; justify-content:space-evenly">
+                            <div class="settings-vertical-container">
+                                <img id = "headTextureImage" src = "bearFace.png" style="max-height: 100%; max-width: 100%"></img>
+                                <label class="textureFileName" style="height:20%"></label>
+                            </div>
+                            <button class = "Button_ChooseTexture" style="padding: 0px; height:40%">Choose texture image<input class="uploadTexture" type='file' style="width:100%; height:100%;" hidden/></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tree-appearance-tab" class="settings-sub-tab"> 
+                <div class="settings-sub-sub-tabs-header">           
+                    <button id = "Button_Tree_Material" onclick="openSubSubTab(event, 'tree-material-tab')">Material</button>                     
+                    <button id = "Button_Tree_Texture" onclick="openSubSubTab(event, 'tree-texture-tab')">Texture</button>
+                </div>
+                <div id="tree-material-tab" class="settings-sub-sub-tab">
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Ambient 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>              
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="TreeMaterialAmbientRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="TreeMaterialAmbientGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="TreeMaterialAmbientBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="1" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Diffuse 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>              
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="TreeMaterialDiffuseRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="TreeMaterialDiffuseGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="TreeMaterialDiffuseBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.7" />
+                            </div>
+                        </div>                     
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Specular 
+                            </label>
+                            <div class="colorPreview">
+                            </div>
+                        </div>             
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    R 
+                                </label>
+                                <input id="TreeMaterialSpecularRSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    G 
+                                </label>
+                                <input id="TreeMaterialSpecularGSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <label >
+                                    B 
+                                </label>
+                                <input id="TreeMaterialSpecularBSlider" type="range" class="settings-slider" min="0.0" max="2.0" step="0.01" value="0.2" />
+                            </div>
+                        </div>                     
+                    </div>
+                    <div class="settings-horizontal-container" style="height:23%; justify-content: space-between">
+                        <div class="settings-vertical-container"style="width: 30%; justify-content:space-around"> 
+                            <label >
+                                Shininess 
+                            </label>
+                        </div>             
+                        <div class="settings-vertical-container">                
+                            <div class="settings-horizontal-container" style="justify-content: space-evenly">
+                                <input id="TreeMaterialShininessSlider" type="range" class="settings-slider" min="0.01" max="20.0" step="0.01" value="10" />
+                            </div>                
+                        </div>                     
+                    </div>
+                </div>
+                <div id="tree-texture-tab" class="settings-sub-sub-tab">
+                    <div class="settings-vertical-container">
+                        <div class="settings-horizontal-container" style="height:30%; justify-content:center">
+                            <div class="settings-vertical-container">
+                                <img id = "foliageTextureImage" src = "treeFoliage.PNG" style="max-height: 100%; max-width: 100%"></img>
+                                <label class="textureFileName" style="height:20%"></label>
+                            </div>
+                            <button class = "Button_ChooseTexture" style="padding: 0px; height:40%">Choose texture image<input class="uploadTexture" type='file' style="width:100%; height:100%;" hidden/></button>
+                        </div>
+                        <div class="settings-horizontal-container" style="height:30%; justify-content:center">
+                            <div class="settings-vertical-container">
+                                <img id = "trunkTextureImage" src = "treeTrunk.PNG" style="max-height: 100%; max-width: 100%"></img>
+                                <label class="textureFileName" style="height:20%"></label>
+                            </div>
+                            <button class = "Button_ChooseTexture" style="padding: 0px; height:40%">Choose texture image<input class="uploadTexture" type='file' style="width:100%; height:100%;" hidden/></button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div-->        
+    </div>
+    
+
+<script type="text/javascript" src="webPageUtils.js"></script>
+<script type="text/javascript" src="webGUIWithCorrectAddress.js"></script>
+
+
+</html>
